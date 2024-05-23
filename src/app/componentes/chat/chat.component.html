@@ -1,0 +1,44 @@
+<div class="container" >
+    <div
+    class="card text-center mt-4 text-light bg-dark cardContainer"
+    *ngIf="usuario"
+  >
+    <div class="card-header">SALA DE CHAT</div>
+  
+    <div class="card-body contendedorMensajes h-100" #chatContainer>
+      <div
+        *ngFor="let mensaje of mensajes"
+        class="msj p-2"
+        [ngClass]="usuario.email == mensaje.emisor ? 'enviado' : 'recibido'"
+      >
+        <strong>{{ mensaje.emisor }}</strong>
+        <p>{{ mensaje.texto }}</p>
+        <span>{{ mensaje.fecha }}</span>
+      </div>
+    </div>
+  
+    <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Ingrese su mensaje"
+        [(ngModel)]="nuevoMensaje.texto"
+        name="texto"
+        required
+      />
+      <div class="input-group-append">
+        <button type="submit" class="input-group-text m-2" id="basic-addon2">
+          <img
+            class="imgEnviar"
+            width="24"
+            height="24"
+            src="assets/img/enviar-mensaje.png"
+            alt="sent"
+          />
+        </button>
+      </div>
+    </form>
+  </div>
+  </div>
+  
+  

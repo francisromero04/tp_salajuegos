@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Biografía</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .contact-info {
+      display: none;
+      position: absolute;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      margin-left: -150px;
+    }
+    .nav-link:hover + .contact-info {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<app-barranav></app-barranav>
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="text-center">
+              <img class="profile-image" src="assets/img/fotoPerfil.jpeg" alt="Imagen de perfil">
+            </div>
+            <h1 class="text-center">Francis Romero</h1>
+            <p class="text-center">Bienvenidos, soy un estudiante de la carrera TUP en la Universidad Tecnológica Argentina, Facultad Regional de Avellaneda. Actualmente
+              me encuentro cursando el cuarto cuatrimeste y desarrollando mi proyecto sala de juegos online.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap JS y jQuery (Requerido para el funcionamiento de Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
