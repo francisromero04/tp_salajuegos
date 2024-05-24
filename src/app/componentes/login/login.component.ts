@@ -32,7 +32,7 @@ export default class LoginComponent {
     return this.formulario?.controls;
   }
 
-  async btnLogin() {  
+  async btnLogin() {
     try {
       await this.autenticacion.iniciarSesion(this.formulario.value.email, this.formulario.value.password);
       this.isLoggedIn = true;
@@ -50,6 +50,11 @@ export default class LoginComponent {
     this.autenticacion.cerrarSesion();
     this.isLoggedIn = false;
     this.ruta.navigate(['/login']); // Redirigir al usuario a la página de inicio de sesión
+  }
+
+  autoLogin() {
+    this.formulario.controls['email'].setValue(this.autenticacion.demoUser.email);
+    this.formulario.controls['password'].setValue(this.autenticacion.demoUser.password);
   }
 
 }

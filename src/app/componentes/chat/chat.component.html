@@ -1,12 +1,10 @@
-<app-barranav></app-barranav>
-
 <div class="container" >
     <div
     class="card text-center mt-4 text-light bg-dark cardContainer"
     *ngIf="usuario"
   >
     <div class="card-header">SALA DE CHAT</div>
-  
+
     <div class="card-body contendedorMensajes h-100" #chatContainer>
       <div
         *ngFor="let dato of mensajes"
@@ -21,7 +19,7 @@
        </div>
       </div>
     </div>
-  
+
     <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
       <input
         type="text"
@@ -46,5 +44,4 @@
     </form>
   </div>
   </div>
-  
-  
+

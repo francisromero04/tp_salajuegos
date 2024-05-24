@@ -35,16 +35,8 @@
       <li class="nav-item">
         <span *ngIf="mostrarChat" class="nav-link active" routerLink="/chat">Chat</span>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link active" routerLink="/ahorcado">Ahorcado</a>
-      </li> 
-
-      <li class="nav-item">
-        <a class="nav-link active" routerLink="/mayormenor">Mayor Menor</a>
-      </li> 
     </ul>
-    
+
     <!-- MOSTRAR CORREO DEL USUARIO -->
   <ng-container *ngIf="correoUsuario">
     <ul class="navbar-nav">
@@ -54,7 +46,7 @@
       </li>
     </ul>
   </ng-container>
-    
+
     <!-- CERRAR SESION -->
     <form *ngIf="usuarioConectado | async as user" class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="logout()">Cerrar Sesión</button>

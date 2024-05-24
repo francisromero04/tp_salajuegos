@@ -24,6 +24,11 @@ export class AuthService {
   correoUsuario: string = ''; // Variable para almacenar el correo del usuario
   db : Firestore;
 
+  demoUser = {
+    email: 'francisnoe04@gmail.com',
+    password: 'zanahoria1',
+  };
+
   // Método para iniciar sesión
   iniciarSesion(correo: string, pass: string) {
     return signInWithEmailAndPassword(this.authenticFirebase, correo, pass)
@@ -103,5 +108,5 @@ export class AuthService {
       return false;
     }
   }
-  
+
 }

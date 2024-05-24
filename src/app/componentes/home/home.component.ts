@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { BarranavComponent } from '../barranav/barranav.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BarranavComponent, CommonModule],
+  imports: [BarranavComponent, CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -8,13 +8,15 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 import {AngularFireModule} from '@angular/fire/compat';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), 
+    provideHttpClient(),
+    provideRouter(routes),
     importProvidersFrom(
-      provideFirebaseApp(() => 
-        initializeApp({          
+      provideFirebaseApp(() =>
+        initializeApp({
           "projectId": "salajuegos-b2660",
           "appId": "1:208930793616:web:33137f936d62166fbbd015",
           "storageBucket": "salajuegos-b2660.appspot.com",
@@ -25,7 +27,7 @@ export const appConfig: ApplicationConfig = {
       )
     ),
     importProvidersFrom(provideAuth(() => getAuth())),
-    importProvidersFrom(provideFirestore(() => getFirestore())), 
+    importProvidersFrom(provideFirestore(() => getFirestore())),
     importProvidersFrom(provideStorage(() => getStorage())),
     importProvidersFrom(AngularFireModule.initializeApp({
       projectId: "salajuegos-b2660",

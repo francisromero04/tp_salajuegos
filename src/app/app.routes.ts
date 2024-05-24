@@ -6,14 +6,14 @@ export const routes: Routes = [
     {
         path: "login",
         loadComponent: () => import("./componentes/login/login.component"),
-        ...canActivate(()=> redirectLoggedInTo(['/home'])), 
+        ...canActivate(()=> redirectLoggedInTo(['/home'])),
     },
     {
         path: "home",
         loadComponent: () => import("./componentes/home/home.component"), //al momento de cargar el componente/ruta, se importa
     },
     {
-        path: "quiensoy", 
+        path: "quiensoy",
         loadComponent: () => import("./componentes/quien-soy/quien-soy.component"),
     },
     {
@@ -26,19 +26,17 @@ export const routes: Routes = [
         ...canActivate(()=> redirectLoggedInTo(['/home'])),
     },
     {
-        path: 'ahorcado', 
-        loadComponent: () => import("./componentes/juegos/ahorcado/ahorcado.component")
-    },
-    {
-        path: 'mayormenor', 
-        loadComponent: () => import("./componentes/juegos/mayormenor/mayormenor.component")
+        path: "juegos",
+        loadChildren: () => import("./componentes/juegos/juegos.routes"), //importa el archivo rutas de los hijos
+        ...canActivate(()=> redirectUnauthorizedTo(['/login'])),
     },
     {
         path: "chat",
         loadComponent: () => import("./componentes/chat/chat.component"),
+        ...canActivate(()=> redirectUnauthorizedTo(['/login'])),
     },
     {
         path: "**", //¿estoy en cualquier ruta?
-        redirectTo: 'error',    
+        redirectTo: 'error',
     }
 ];
