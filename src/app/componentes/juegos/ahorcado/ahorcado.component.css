@@ -1,0 +1,112 @@
+.container-ahorcado {
+    display: flex;
+    width: 98vw;
+    height: 90vh;
+    overflow: hidden;
+  }
+  
+  .aside {
+    width: 40vw;
+    height: 90vh;
+    padding: 20px;
+  }
+  
+  .ahorcado {
+    padding: 20px;
+    margin-left: 10px;
+  }
+  
+  h3.badge {
+    margin-top: 5px;
+    font-size: 2em;
+    padding: 15px;
+  }
+  
+  button.letra {
+    padding: 20px;
+    margin: 5px 5px;
+    font-size: 4rem;
+  }
+  
+  button.tamaño {
+    margin-top: 5px;
+  }
+  
+  h1.color {
+    color: white;
+    padding: 15px;
+  }
+  
+  h1.palabra {
+    color: white;
+    display: inline-block;
+    background-color: gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+  }
+  
+  .right {
+    width: 60vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .top,
+  .bottom {
+    margin: 5px 5px;
+  }
+  
+  .top {
+    margin: 5px 5px;
+    width: 58vw;
+    height: 35vh;
+  }
+  
+  .bottom {
+    margin: 5px 5px;
+    width: 58vw;
+    height: 55vh;
+  }
+  
+  /* Estilo para el título del juego */
+h1.title {
+    font-size: 2.5rem;
+    color: #0275d8; /* Cambia el color según tu preferencia */
+  }
+  
+  /* Estilo para los botones de letras */
+  button.letra {
+    padding: 15px 20px;
+    margin: 5px;
+    font-size: 2rem;
+    border: none;
+    color: white;
+    background-color: #292b2c;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.letra:hover {
+    background-color: #0275d8; /* Cambia el color de fondo al pasar el mouse */
+  }
+  
+  /* Estilo para el botón "REINICIAR" */
+  button.reiniciar {
+    padding: 15px 20px;
+    margin-top: 15px;
+    font-size: 2rem;
+    background-color: #0275d8; /* Cambia el color según tu preferencia */
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.reiniciar:hover {
+    background-color: #E33939; /* Cambia el color al pasar el mouse */
+  }
+  

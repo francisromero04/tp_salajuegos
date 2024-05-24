@@ -4,6 +4,17 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Timestamp } from 'firebase/firestore';
+import { Juego } from '../clases/juego';
+import {
+  Firestore,
+  addDoc,
+  collection,
+  collectionData,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +22,7 @@ import { Timestamp } from 'firebase/firestore';
 export class AuthService {
   constructor(private authenticFirebase : Auth, private firestore : AngularFirestore, private autenticacionAngular :AngularFireAuth ){}
   correoUsuario: string = ''; // Variable para almacenar el correo del usuario
+  db : Firestore;
 
   // Método para iniciar sesión
   iniciarSesion(correo: string, pass: string) {
@@ -74,6 +86,22 @@ export class AuthService {
         }
       );
     });
+  }
+
+  public async guardarResultadoJuegoBD(juego: Juego) {
+    try {
+      const docRef = await addDoc(collection(this.db, 'juegos'), {
+        nombre: juego.nombre,
+        fecha: juego.fecha,
+        puntaje: juego.puntaje,
+        juego:juego.juego
+      });
+      console.log('Document written with ID: ', docRef.id);
+      return true;
+    } catch (e) {
+      console.error('Error adding document: ', e);
+      return false;
+    }
   }
   
 }

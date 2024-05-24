@@ -1,0 +1,54 @@
+<app-barranav></app-barranav>
+
+<div class="container-ahorcado">
+    <div class="container aside">
+      <img
+        class="ahorcado"
+        src="assets/ahorcado/Ahorcado-{{ intentos }}.png"
+        class="ahorcado-img"
+        alt="ahorcado"
+        style="width: 80%"
+      />
+    </div>
+    <div class="container right">
+      <div class="top">
+        <div class="row">
+          <div class="col text-center tex">
+            <h3 class="badge bg-secondary text-wrap">
+              INTENTOS: <small>{{ intentos }} / 6 </small>
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <h1 class="palabra">{{ palabraJuego }}</h1>
+          </div>
+        </div>
+        <div class="row" *ngIf="partida == true || partida == false">
+          <div class="col text-center">
+            <button
+              class="btn btn-secondary tamaño reiniciar"
+              (click)="reiniciar()"
+            >
+              REINICIAR
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="row" *ngIf="partida == undefined">
+          <div class="col text-center">
+            <button
+              *ngFor="let letra of abecedario"
+              (click)="comprobarClick(letra)"
+              [style.background-color]="botonClick[letra] ? '#0275d8' : '#292b2c'"
+              class="btn text-light letra"
+            >
+              {{ letra.toUpperCase() }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

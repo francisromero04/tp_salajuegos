@@ -26,6 +26,14 @@ export const routes: Routes = [
         ...canActivate(()=> redirectLoggedInTo(['/home'])),
     },
     {
+        path: 'ahorcado', 
+        loadComponent: () => import("./componentes/juegos/ahorcado/ahorcado.component")
+    },
+    {
+        path: 'mayormenor', 
+        loadComponent: () => import("./componentes/juegos/mayormenor/mayormenor.component")
+    },
+    {
         path: "chat",
         loadComponent: () => import("./componentes/chat/chat.component"),
     },
