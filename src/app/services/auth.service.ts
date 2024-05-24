@@ -16,7 +16,7 @@ export class AuthService {
   iniciarSesion(correo: string, pass: string) {
     return signInWithEmailAndPassword(this.authenticFirebase, correo, pass)
       .then(() => {
-        this.correoUsuario = correo; // Almacenar el correo del usuario después de iniciar sesión
+        this.correoUsuario = correo; // Almacena el correo del usuario después de iniciar sesión
         this.guardarInfoLogin(correo); // Guardar información de inicio de sesión en Firestore
       });
   }

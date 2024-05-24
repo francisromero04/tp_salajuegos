@@ -1,86 +1,58 @@
-import { Component, AfterViewChecked, ViewChild } from '@angular/core';
+import { Component, AfterViewChecked, ViewChild, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Mensaje } from '../../clases/mensaje.interface';
 import { ChatService } from '../../services/chat.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BarranavComponent } from '../barranav/barranav.component';
+import { Usuario } from '../../clases/usuario';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, BarranavComponent],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export default class ChatComponent {
-  mensajes: Mensaje[] = [];
-  nuevoMensaje: Mensaje = { emisor: '', texto: '', fecha: '' };
+export default class ChatComponent implements OnInit{
+  mensajes: any [] = [];
   usuario: any;
-  suscripcion: any;
-  @ViewChild('chatContainer') chatContainer?: any;
+  mensajeNuevo: Usuario;
+  
+  constructor(private authService: AuthService, private mensajesService: ChatService) {
 
-  constructor(
-    private authService: AuthService,
-    private mensajesService: ChatService
-  ) {}
-
-  ngAfterViewChecked() {
-    this.scrollChatToBottom();
   }
 
-  scrollChatToBottom() {
-    try {
-        this.chatContainer.nativeElement.scrollTop =
-        this.chatContainer.nativeElement.scrollHeight;
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  ngOnInit():void{
+    this.mensajeNuevo = {};
+    this.authService.obtenerUsuarioConectado().subscribe(user => {
 
-  ngOnInit(): void {
-    this.suscripcion = this.mensajesService.getMsg().subscribe((data) => {
-      this.mensajes = data.map((e) => {
-        return {
-          id: e.id,
-          ...(e as Mensaje),
-        } as Mensaje;
-      });
     });
     this.authService.getCurrentUser().then((user) => {
-        this.usuario = user;
-         console.log(user);
-      }).catch((error) => {
-        console.error('Ocurrió un error al obtener el usuario:', error);
-      });
-  }
-
-  ngOnDestroy() {
-    this.suscripcion.unsubscribe();
+    this.usuario = user;
+    console.log(user);
+    }).catch((error) => {
+      console.error('Ocurrió un error al obtener el usuario:', error);
+    });
+    
+    this.mensajesService.getMsg().subscribe(mensajes => {
+    this.mensajes = mensajes;
+    });
   }
 
   enviarMensaje(): void {
-    this.nuevoMensaje.emisor = this.usuario?.email;
-    this.nuevoMensaje.fecha = this.obtenerFecha();
-    if (this.nuevoMensaje.texto !== '')
-      this.mensajesService.addMsg(this.nuevoMensaje);
-    this.nuevoMensaje = { emisor: '', texto: '', fecha: '' };
-  }
-
-  obtenerFecha(): string {
-    let ahora = new Date();
-    let dia = ahora.getDate();
-    let mes = ahora.getMonth() + 1;
-    let año = ahora.getFullYear();
-    let horas = ahora.getHours();
-    let minutos = ahora.getMinutes();
-    let segundos = ahora.getSeconds();
-    let diaStr = dia < 10 ? '0' + dia.toString() : dia.toString();
-    let mesStr = mes < 10 ? '0' + mes.toString() : mes.toString();
-    let segSrt =
-      segundos < 10 ? '0' + segundos.toString() : segundos.toString();
-    let minStr = minutos < 10 ? '0' + minutos.toString() : minutos.toString();
-    let fechaFormateada = `${diaStr}/${mesStr}/${año} ${horas}:${minStr}:${segSrt}`;
-
-    return fechaFormateada;
+    this.authService.obtenerDatosUsuario().then(user => { //traje datos usuario
+    const infoMensaje : Usuario = {
+      uid:user.uid, 
+      email:user.email,
+      mensaje:this.mensajeNuevo.mensaje,
+      fechaHorario:Timestamp.now()};
+      this.mensajeNuevo = infoMensaje;
+      this.mensajesService.addMsg(this.mensajeNuevo);
+      this.mensajeNuevo.mensaje = " ";
+    }).catch(error=>{
+      console.log("error.",error);
+    })
+    
   }
 }

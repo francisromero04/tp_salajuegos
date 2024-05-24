@@ -32,9 +32,8 @@
       <li class="nav-item">
         <a class="nav-link active" routerLink="/quiensoy">¿Quién soy?</a>
       </li>
-
       <li class="nav-item">
-        <a class="nav-link active" routerLink="/chat">Chat</a>
+        <span *ngIf="mostrarChat" class="nav-link active" routerLink="/chat">Chat</span>
       </li>
     </ul>
     

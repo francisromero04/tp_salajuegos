@@ -1,12 +1,9 @@
-export class Usuario {
-    nick: string;
-    password?: string;
-    email: string;
-    
-    constructor(nick: string, email: string, password?: string) {
-      this.nick = nick;
-      this.password = password;
-      this.email = email;
-    }
-  }
-  
+import { Timestamp } from "@angular/fire/firestore";
+
+export interface Usuario {
+  uid?: string;
+  email?: string;
+  mensaje?: string;
+  fechaHorario?: Timestamp; 
+  //? hace que los datos sean opcionales
+}

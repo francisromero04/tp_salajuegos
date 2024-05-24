@@ -1,3 +1,5 @@
+<app-barranav></app-barranav>
+
 <div class="container" >
     <div
     class="card text-center mt-4 text-light bg-dark cardContainer"
@@ -7,13 +9,16 @@
   
     <div class="card-body contendedorMensajes h-100" #chatContainer>
       <div
-        *ngFor="let mensaje of mensajes"
-        class="msj p-2"
-        [ngClass]="usuario.email == mensaje.emisor ? 'enviado' : 'recibido'"
-      >
-        <strong>{{ mensaje.emisor }}</strong>
-        <p>{{ mensaje.texto }}</p>
-        <span>{{ mensaje.fecha }}</span>
+        *ngFor="let dato of mensajes"
+        class="msj p-2" >
+        <div class="mensaje-container p-2"
+        [ngClass]="(usuario.uid === dato.uid) ? 'enviado' : 'recibido'">
+         <div class="mensaje">{{ dato.mensaje }}</div>
+         <div class="info">
+          <span class="email">{{ dato.email }}</span> -
+          <span class="fecha">{{ dato.fechaHorario | date: 'dd/MM/yyyy HH:mm' }}</span>
+         </div>
+       </div>
       </div>
     </div>
   
@@ -22,7 +27,8 @@
         type="text"
         class="form-control"
         placeholder="Ingrese su mensaje"
-        [(ngModel)]="nuevoMensaje.texto"
+        [(ngModel)]="mensajeNuevo.mensaje"
+        [ngModelOptions]="{ standalone: true }"
         name="texto"
         required
       />

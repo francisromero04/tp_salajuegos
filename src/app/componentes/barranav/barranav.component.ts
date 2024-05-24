@@ -15,14 +15,17 @@ export class BarranavComponent implements OnInit {
   usuarioConectado = this.authService.obtenerUsuarioConectado();
   correoUsuario: string | null = null; // Cambia el tipo de correoUsuario
   mostrarCorreo: boolean = false;
+  mostrarChat: boolean = false;
 
   ngOnInit() {
     this.usuarioConectado.subscribe(user => {
       if (user) {
         this.correoUsuario = user.email;
         this.mostrarCorreo = true; // Mostrar el correo cuando el usuario esté conectado
+        this.mostrarChat = true;
       } else {
         this.mostrarCorreo = false; // Ocultar el correo cuando el usuario no esté conectado
+        this.mostrarChat = false;
       }
     });
   }
@@ -31,6 +34,7 @@ export class BarranavComponent implements OnInit {
     this.authService.cerrarSesion();
     this.correoUsuario = null; // Limpiar el correo cuando el usuario cierre sesión
     this.mostrarCorreo = false; // Ocultar el correo al cerrar sesión
+    this.mostrarChat = false;
     this.ruta.navigate(['/login']);
   }
 }
