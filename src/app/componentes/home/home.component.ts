@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BarranavComponent } from '../barranav/barranav.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +12,18 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export default class HomeComponent {
-  usuarioConectado : any;
+  usuarioConectado: any;
 
-  constructor(private auth:AuthService){}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.auth.obtenerUsuarioConectado().subscribe(usuario=>{
+    this.auth.obtenerUsuarioConectado().subscribe(usuario => {
       this.usuarioConectado = usuario;
-    }); 
+    });
   }
-  
+
+  irALogin(): void {
+    this.router.navigate(['/login']); // Redirige al usuario a la página de login
+  }
+
 }

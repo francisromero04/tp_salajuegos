@@ -1,0 +1,18 @@
+.card {
+  max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  margin-top: -50px; /* Ajusta el margen superior negativo según tus necesidades */
+}
+
+.card-body {
+  padding: 5rem 2rem; /* Ajusta el padding según tus necesidades */
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+

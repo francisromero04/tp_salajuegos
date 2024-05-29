@@ -18,12 +18,18 @@ export default class ChatComponent implements OnInit{
   mensajes: any [] = [];
   usuario: any;
   mensajeNuevo: Usuario;
-  
+  cargandoMensajes: boolean = true;
+
   constructor(private authService: AuthService, private mensajesService: ChatService) {
 
   }
 
   ngOnInit():void{
+    this.mensajesService.getMsg().subscribe(mensajes => {
+      this.mensajes = mensajes;
+      this.cargandoMensajes = false; // Indica que los mensajes se han cargado
+    });
+
     this.mensajeNuevo = {};
     this.authService.obtenerUsuarioConectado().subscribe(user => {
 
@@ -34,7 +40,7 @@ export default class ChatComponent implements OnInit{
     }).catch((error) => {
       console.error('Ocurrió un error al obtener el usuario:', error);
     });
-    
+
     this.mensajesService.getMsg().subscribe(mensajes => {
     this.mensajes = mensajes;
     });
@@ -43,7 +49,7 @@ export default class ChatComponent implements OnInit{
   enviarMensaje(): void {
     this.authService.obtenerDatosUsuario().then(user => { //traje datos usuario
     const infoMensaje : Usuario = {
-      uid:user.uid, 
+      uid:user.uid,
       email:user.email,
       mensaje:this.mensajeNuevo.mensaje,
       fechaHorario:Timestamp.now()};
@@ -53,6 +59,6 @@ export default class ChatComponent implements OnInit{
     }).catch(error=>{
       console.log("error.",error);
     })
-    
+
   }
 }

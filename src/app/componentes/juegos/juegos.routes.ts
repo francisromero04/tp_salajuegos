@@ -12,7 +12,11 @@ export const routes: Routes = [
     {
       path: 'preguntados',
       loadComponent: () => import("./preguntados/preguntados.component")
-  },
+    },
+    {
+      path: 'serpiente',
+      loadComponent: () => import("./serpiente/serpiente.component")
+    },
 ];
 
 export default routes; //tiene dentro rutas de mis juegos
