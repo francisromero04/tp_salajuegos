@@ -22,8 +22,4 @@ export default class HomeComponent {
     });
   }
 
-  irALogin(): void {
-    this.router.navigate(['/login']); // Redirige al usuario a la página de login
-  }
-
 }

@@ -7,7 +7,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
-import {AngularFireModule} from '@angular/fire/compat';
+import { AngularFireModule } from '@angular/fire/compat';
 import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
@@ -17,12 +17,12 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       provideFirebaseApp(() =>
         initializeApp({
-          "projectId": "salajuegos-b2660",
-          "appId": "1:208930793616:web:33137f936d62166fbbd015",
-          "storageBucket": "salajuegos-b2660.appspot.com",
-          "apiKey": "AIzaSyAZRKPLRyCCUPlVmpHwaASg-xVy9hhlHIE",
-          "authDomain": "salajuegos-b2660.firebaseapp.com",
-          "messagingSenderId": "208930793616",
+          "projectId": "clinicaonline-50bb7",
+          "appId": "1:73778727254:web:405c2f92e09d79a81d6ef7",
+          "storageBucket": "clinicaonline-50bb7.appspot.com",
+          "apiKey": "AIzaSyDd5KSEgw1vaBrsNjYhqD5Khd4Z2998_K0",
+          "authDomain": "clinicaonline-50bb7.firebaseapp.com",
+          "messagingSenderId": "73778727254",
         })
       )
     ),
@@ -30,11 +30,11 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideFirestore(() => getFirestore())),
     importProvidersFrom(provideStorage(() => getStorage())),
     importProvidersFrom(AngularFireModule.initializeApp({
-      projectId: "salajuegos-b2660",
-      appId: "1:208930793616:web:33137f936d62166fbbd015",
-      storageBucket: "salajuegos-b2660.appspot.com",
-      apiKey: "AIzaSyAZRKPLRyCCUPlVmpHwaASg-xVy9hhlHIE",
-      authDomain: "salajuegos-b2660.firebaseapp.com",
-      messagingSenderId: "208930793616",
+      apiKey: "AIzaSyDd5KSEgw1vaBrsNjYhqD5Khd4Z2998_K0",
+      authDomain: "clinicaonline-50bb7.firebaseapp.com",
+      projectId: "clinicaonline-50bb7",
+      storageBucket: "clinicaonline-50bb7.appspot.com",
+      messagingSenderId: "73778727254",
+      appId: "1:73778727254:web:405c2f92e09d79a81d6ef7"
   }))]
 };

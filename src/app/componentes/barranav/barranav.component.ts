@@ -13,14 +13,14 @@ import { CommonModule } from '@angular/common';
 export class BarranavComponent implements OnInit {
   constructor(private authService: AuthService, private ruta: Router) {}
   usuarioConectado = this.authService.obtenerUsuarioConectado();
-  correoUsuario: string | null = null; // Cambia el tipo de correoUsuario
+  nombreUsuario: string | null = null; // Cambia el tipo de nombreUsuario
   mostrarCorreo: boolean = false;
   mostrarChat: boolean = false;
 
   ngOnInit() {
     this.usuarioConectado.subscribe(user => {
       if (user) {
-        this.correoUsuario = user.email;
+        this.nombreUsuario = user.displayName;
         this.mostrarCorreo = true; // Mostrar el correo cuando el usuario esté conectado
         this.mostrarChat = true;
       } else {
@@ -32,7 +32,7 @@ export class BarranavComponent implements OnInit {
 
   logout() {
     this.authService.cerrarSesion();
-    this.correoUsuario = null; // Limpiar el correo cuando el usuario cierre sesión
+    this.nombreUsuario = null; // Limpiar el correo cuando el usuario cierre sesión
     this.mostrarCorreo = false; // Ocultar el correo al cerrar sesión
     this.mostrarChat = false;
     this.ruta.navigate(['/login']);

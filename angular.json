@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tpsaladejuegos": {
+    "clinicaonline": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tpsaladejuegos",
+            "outputPath": "dist/clinicaonline",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -26,7 +26,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
             ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
@@ -61,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tpsaladejuegos:build:production"
+              "buildTarget": "clinicaonline:build:production"
             },
             "development": {
-              "buildTarget": "tpsaladejuegos:build:development"
+              "buildTarget": "clinicaonline:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "tpsaladejuegos:build"
+            "buildTarget": "clinicaonline:build"
           }
         },
         "test": {
@@ -100,12 +101,12 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "tpsaladejuegos:build:production",
-              "serveTarget": "tpsaladejuegos:serve:production"
+              "buildTarget": "clinicaonline:build:production",
+              "serveTarget": "clinicaonline:serve:production"
             },
             "development": {
-              "buildTarget": "tpsaladejuegos:build:development",
-              "serveTarget": "tpsaladejuegos:serve:development"
+              "buildTarget": "clinicaonline:build:development",
+              "serveTarget": "clinicaonline:serve:development"
             }
           },
           "defaultConfiguration": "production"

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/tpsaladejuegos/browser",
+    "public": "clinicaonline",
     "ignore": [
       "firebase.json",
       "**/.*",
